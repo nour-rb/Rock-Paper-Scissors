@@ -1,11 +1,12 @@
 let rock = 0;
 let paper = 1;
 let scissors = 2;
+
 // get computer choice 
-// generate a number
-let computerNumber = Math.floor(Math.random() * 3);
-//console.log(computerNumber);
-function getComputerChoice(computerNumber){
+function getComputerChoice(){
+    // generate a number
+    let computerNumber = Math.floor(Math.random() * 3);
+    // convert the generated number to a word
     let computerChoice;
     if (computerNumber === 0){
         computerChoice = "rock";
@@ -23,25 +24,63 @@ function getComputerChoice(computerNumber){
         return computerChoice;
     }
 }
-getComputerChoice(computerNumber);
 
 // get human choice
 function getHumanChoice(){
-    let Choice = prompt("rock, paper or scissors? ");
-    return Choice;
+    let choice = prompt("rock, paper or scissors? ");
+    return choice;
 }
-let humanChoice = getHumanChoice();
-console.log(humanChoice);
 
-
-// compare them
+// initialize scores
 let computerScore = 0;
-let humanscore = 0;
+let humanScore = 0;
 
+// function logic for one round
 function playRound(humanChoice, computerChoice){
-
+    humanChoice = humanChoice.toLowerCase();
+    if (computerChoice === humanChoice){
+        return("it's a tie!");
+    }
+    else if (
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "paper")
+    ){
+        return("You win!");
+    }
+    else{
+        return("Computer wins!");
+    }
 }
-// score 1 to the winner
-// repeat 2 more times
-// compare scores
-// print final winner
+
+function playGame(){
+    for (i = 0; i < 5; i++){
+        let computerChoice = getComputerChoice(); 
+
+        let humanChoice = getHumanChoice(); 
+        if (humanChoice) {
+            humanChoice = humanChoice.toLowerCase();
+        }
+
+        let result = playRound(humanChoice, computerChoice); 
+
+        // Update scores based on the result
+        if (result === "You win!"){
+            humanScore++;
+        }
+        else if (result === "Computer wins!"){
+            computerScore++;
+        }
+    }
+    // After 5 rounds, announce the final winner
+    if (computerScore > humanScore){
+        console.log("The computer wins the game!");
+    }
+    else if (computerScore < humanScore){
+        console.log("You win the game!");
+    }
+    else{
+        console.log("It's a tie game!");
+    }
+}
+playGame();

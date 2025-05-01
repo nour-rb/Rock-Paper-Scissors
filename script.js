@@ -26,14 +26,21 @@ function getComputerChoice(computerNumber){
 getComputerChoice(computerNumber);
 
 // get human choice
-function getHumanChoice(humanChoice){
+function getHumanChoice(){
     let Choice = prompt("rock, paper or scissors? ");
-    return humanChoice;
+    return Choice;
 }
 let humanChoice = getHumanChoice();
+console.log(humanChoice);
 
 
 // compare them
+let computerScore = 0;
+let humanscore = 0;
+
+function playRound(humanChoice, computerChoice){
+
+}
 // score 1 to the winner
 // repeat 2 more times
 // compare scores

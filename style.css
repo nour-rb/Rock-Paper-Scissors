@@ -1,0 +1,15 @@
+body {
+    padding: 100px;
+    max-width: 500px;
+}
+#container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+button {
+    font-size: 55px;
+}
